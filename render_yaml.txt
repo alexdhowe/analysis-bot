@@ -1,0 +1,15 @@
+services:
+  - type: worker
+    name: stock-analysis-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python stock_analysis_bot.py
+    envVars:
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: POLYGON_API_KEY
+        sync: false
+      - key: PORT
+        value: 10000
+    healthCheckPath: /
+    autoDeploy: false
